@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -g -Wall
-struct: struct.o
+all: struct
 
 clean:
 	rm *.o struct
