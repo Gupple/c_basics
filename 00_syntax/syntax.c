@@ -1,60 +1,70 @@
 /* 00. C Syntax Tour */
 
+// Two styles of comments: Line comments and
+/* Multi
+ * line
+ * comments. 
+ */
+
 /* To include a header file from the standard library, use <>. */
 #include <stdio.h>
+#include <assert.h>
 
-/* This defines the main method of this file. This is the entrypoint into
- * the program, i.e. the first function that will be ran when this program
- * starts executing. The return type of main is an int, which is commonly
- * interpreted as a status code. This is useful when we want to report any 
- * type of error that occurred during the execution of this program, or lack
- * thereof. The input parameter argv is the array of arguments we passed 
- * in, and argc is the number of arguments passed in. For example, if the 
- * executable is called "executable", and we ran it on the command line as
- * ./executable 5 abc hello, then argv will look like
- * {"./executable", "5", "abc", "hello", NULL}, and argc will be 4. Note how 
- * the first argument is the path of the executable running, how all of the 
- * arguments are strings, and how argv[argc] is NULL. */
+/* Forward declaring a function */
+void forward_declared(void);
 
-/* If you do not care about the passed in arguments, you can also declare
- * main as int main() {...} */
-int main(int argc, char **argv) {
-	/* This declares a variable of type double called y. Note how 
-	 * we didn't initialize it. Do not read from uninitialized 
-	 * variables! Make sure to always write to them first. */
+/* Function definition */
+void forward_declared() {
+	printf("Hi there!\n");
+}
+
+/* Initialization, Assignment, Reassignment, Pre/Post Increment */
+void initialization_assignment() {
+	/* Definition of an uninitialized variable. Do not read from
+	 * uninitialized variables! Make sure to always write to them
+	 * first. */
 	double y;
 
-	/* This defines a variable of type int called x that stores 
-	 * the result of the computation of 1 + 2. */
+	/* Definition of an initialized variable */
 	int x = 1 + 2;
 
-	/* This is how you call a function, in particular, printf will
-	 * print the arguments using the passed-in formatted string, which
-	 * in this case, is 3. */
-	printf("%d\n", x);
+	/* Reassignment */
+	x = 5;
 
-	/* Two types of increments: pre-increment and post-increment.
-	 */
+	/* Two types of increments: pre-increment and post-increment */
 	int z = 0;
-	printf("A pre-increment increments first and then returns the value:");
-	printf(" %d\n", ++z);
-	printf("A post-increment increments the value but returns the value");
-	printf(" before incrementing: %d\n", z++);
-	printf("This variable did get incremented, though: %d\n", z);
+	assert(++z == 1);
+	assert(z++ == 1);
+	assert(z == 2);
+}
 
-	// Two styles of comments: Line comments and
-	/* Multi-line comments. */
+/* Multiple Declarations */
+void mult_declaration() {
+	int x, y;
+	long a = 5, b = 4;
+	char c = 'a', d;
+	short e, f = 6;
+	char m = 'a', n, o = 'Z', p;
+}
 
-	/* Conditionals */
-	if (x == 1 + 2) {
+/* Conditionals */
+void conditionals() {
+	int x = 3;
+	if (x == 1 + 2) { /* <-- Start of if-else block */
 		printf("Welcome to 162!\n");
+		x = 4;
 	} else if (x == 4) {
-		printf("Something else.\n");
+		printf("This does not get reached.\n");
 	} else {
 		printf("How did we even get here?\n");
-	}
+	} /* <-- End of if-else block */
+	if (x == 4) { /* <-- Start of new block */
+		printf("This gets reached, however.\n"); 
+	} /* <-- End of new block */
+}
 
-	/* Switch statements */
+/* Switch statements */
+void switch_statement() {
 	char c = 'c';
 	printf("Make sure to break out of your cases!\n");
 	switch (c) {
@@ -70,33 +80,51 @@ int main(int argc, char **argv) {
 			printf("This is your catch-all case.\n");
 		break;
 	}
+}
 
-	/* Conditionals */
+/* Loops */
+void loops() {
 	/* A for loop has 3 parts. The first part is for initializing
 	 * loop variables. The second part is the terminating condition.
-         * The third part is for advancing the loop variable. Note how
-	 * this is not just limited to integers. */
+	 * The third part is for advancing the loop variable. Note that
+	 * for loops are not just limited to integers. */
 	for (int i = 0; i < 16; ++i) {
 		printf("%d ", i);
 	}
 	printf("\n");
 
+	{
 	int i = 0;
-	/* Same exact loop, but while. */
+	/* Same exact loop, but while. Note how we had to introduce the
+	 *  loop variable outside before using it in the body, however. */
 	while (i != 16) {
 		printf("%d ", i);
 		++i;
 	}
 	printf("\n");
+	}
 
+	{
 	/* Do while loops are slightly different, in that the body
-	 * is executed before the loop condition is checked. This guarantees
-	 * that the loop body is executed at least once. */
-	i = 0;
+	* is executed before the loop condition is checked. This guarantees
+	* that the loop body is executed at least once. */
+	int i = 0;
 	do {
 		printf("%d ", i);
 		++i;
 	} while (i < 0);
-	printf("\nThat executed once!\n");
+	printf("\n");
+	printf("That executed once!\n");
+	}
+}
+
+int main() {
+	/* Function calls */
+	forward_declared();
+	initialization_assignment();
+	mult_declaration();
+	conditionals();
+	switch_statement();
+	loops();
 }
 
