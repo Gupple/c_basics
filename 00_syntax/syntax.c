@@ -118,6 +118,54 @@ void loops() {
 	}
 }
 
+/* Enums */
+void enums() {
+	/* Enums are an abstraction for defining named constants. */
+	enum Planet {
+		MERCURY,
+		VENUS,
+		EARTH,
+		MARS,
+		JUPITER,
+		SATURN,
+		URANUS,
+		NEPTUNE,
+	};
+
+	/* By default, the enum constants are numbered from 0 and go up by 1.
+	 * So MERCURY is 0, VENUS is 1, EARTH is 2, and so on. */
+	
+	/* Great with switch statements */
+	enum Planet planet = VENUS;
+	switch (planet) {
+		case MERCURY:
+			printf("MERCURY");
+		break;
+		case VENUS:
+			printf("VENUS");
+		break;
+		case EARTH:
+			printf("EARTH");
+		break;
+		case MARS:
+			printf("MARS");
+		break;
+		case JUPITER:
+			printf("JUPITER");
+		break;
+		case SATURN:
+			printf("SATURN");
+		break;
+		case URANUS:
+			printf("URANUS");
+		break;
+		case NEPTUNE:
+			printf("NEPTUNE");
+		break;
+	}
+	printf("\n");
+}
+
 int main() {
 	/* Function calls */
 	forward_declared();
@@ -126,5 +174,6 @@ int main() {
 	conditionals();
 	switch_statement();
 	loops();
+	enums();
 }
 
