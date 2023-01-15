@@ -1,3 +1,5 @@
+/* 01. Pointers */
+
 #include <stdio.h>
 #include <stdlib.h>
 int m = 56;
@@ -27,6 +29,38 @@ void dereferencing() {
 	 * dereference and assign a new value: */
 	*z = 0;
 	printf("This changes the value of x: %d\n", x);
+}
+
+/* Pointer Arithmetic */
+void pointer_arithmetic() {
+	/* This defines p to be a pointer pointing to the heap
+	 * and having enough space to store 10 ints. It looks something
+	 * like this:
+	 * | int | int | int | int | int | int | int | int | int | int |
+	 * ^
+	 * |
+	 * p
+	 * -----------------------------------------------------------*/
+	int *p = malloc(sizeof(int) * 10);
+
+	/* You can add or subtract integers from pointers to get 
+	 * another pointer. */
+	printf("%p, %p, %p\n", p - 1, p, p + 1);
+	/* Notice how the difference between p - 1 and p is 4, and p and
+	 * p + 1 is also 4. This is because adding an integer i gives us 
+	 * a pointer that is p + i * sizeof(type being pointed to). */
+
+	/* You can access elements using two different notations. */
+	printf("%d %d\n", p[5], *(p + 3));
+
+	/* We can reassign pointers if they are not constant. */
+	p = p + 5;
+	/* | int | int | int | int | int | int | int | int | int | int |
+	 *                               ^
+	 *                               |
+	 *                               p is now here.
+	 * -----------------------------------------------------------*/
+	free(p - 5);
 }
 
 /* Multiple Declaration with Pointers */
@@ -67,6 +101,7 @@ void point_anywhere() {
 int main() {
 	declaration();
 	dereferencing();
+	pointer_arithmetic();
 	mult_declaration();
 	point_anywhere();
 }

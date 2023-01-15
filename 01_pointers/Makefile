@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -g -Wall
-pointer: pointer.o
+all: pointer
 
 clean:
-	rm *.o pointer
+	rm pointer

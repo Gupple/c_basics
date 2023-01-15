@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -g -Wall
-syntax: syntax.o
+all: syntax
 
 clean:
-	rm *.o syntax
+	rm syntax
