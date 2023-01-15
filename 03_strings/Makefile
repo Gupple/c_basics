@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -g -Wall
-all: pointers
+all: strings
 
 clean:
-	rm pointers
+	rm strings

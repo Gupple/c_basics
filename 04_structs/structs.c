@@ -1,3 +1,5 @@
+/* 04. Structs */
+
 #include <stdio.h>
 
 /* This declares a struct. Note how we haven't defined the struct

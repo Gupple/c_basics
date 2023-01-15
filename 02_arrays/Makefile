@@ -1,6 +1,6 @@
 CC = gcc
 CLFAGS = -g -Wall
-all: array
+all: arrays
 
 clean:
-	rm array
+	rm arrays
